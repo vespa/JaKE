@@ -1,12 +1,10 @@
 /*!
  * JaKE - Javascript Kinematics Engine
- * http://heresias.org/
- *
+ * http://deadcomosnaut.com
  * Developed by Danilo Costa Vespa
  * http://twitter.com/dvespa
  * d.vespa@gmail.com
- *
- * Date: Sat Jun 30 15:07:48 2011 -0300
+ * Date: Sat Jul 18 0:00:48 2011 -0300
  */
 (function($){        
     $.fn.extend({
@@ -56,7 +54,7 @@
 		//user for a unique moviment command
 		run: function(p){
 			$(this).stop();
-			this.sequence(p)
+			this.sequence(p);
             return this;			
 		},
 		// store the next moves sequence of the object
@@ -69,9 +67,6 @@
 			
 			if(typeof tx != undefined) clearTimeout(tx);
 			var tx = setTimeout(p, time);
-			var tk = setTimeout(function(){
-			$(this).stop();	
-			}, time);
 			return this;
 		}
     });
@@ -132,7 +127,6 @@
 		},   
 		// defines wich of the object's frame should appear
 		myMove : function(m, t){
-			
 				ob = "#" + t.name;
 				nb = (isNaN(m[t.frameAtual]))? t.frameInitial : m[t.frameAtual];
 				p = $(ob).width() * nb;
@@ -144,12 +138,12 @@
 		},		
 		itsAlive: function(t){
 			ob = "#" + t.name;
-			f = $.actions
+			f = $.actions;
 			// find target's position
 			this.myPos = function(m){
 					if(t.staticObj == true){
 						// fix ie
-						m = $(ob).css(m)
+						m = $(ob).css(m);
 						return m;
 					}else{
 						m = Math.ceil($(ob).css(m).replace("px", ""))+ 0;
@@ -213,7 +207,7 @@
 			var f = this;
             var cont = p.length;
             for(x=0;x<cont;x++){
-                actual = $.extend({},this.cast[$(t).attr("id")],p[x] || {})
+                actual = $.extend({},this.cast[$(t).attr("id")],p[x] || {});
                 var c = actual;
                 $(t).animate({
                     marginLeft: c.posX+"px",
@@ -232,7 +226,7 @@
             return sprSize;
         }        
     }
-})(jQuery)
+})(jQuery);
 $(document).ready(
 	function(){
 		$.actions.timeLine()
